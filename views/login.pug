@@ -1,0 +1,17 @@
+extends layouts/login-layout.pug
+
+block content
+    .loginContainer
+        h1 Вход
+        form(method="post")
+
+            p.errorMessage #{errorMessage}
+
+            //- input(type="text", name="logUsername", placeholder="Username or email", value=logUsername required="")
+            //- input(type="password", name="logPassword", placeholder="Password", required="")
+
+            input(type="text", name="logUsername", placeholder="Логин или е-мэйл", value="zaria" required="")
+            input(type="password", name="logPassword", placeholder="Пароль", value="555" required="")
+
+            input(type="submit", value="Вход")
+        a(href="/register") Нет аккаунта, регистрируйтесь.

@@ -1,0 +1,32 @@
+extends layouts/login-layout.pug
+
+block content
+    .loginContainer
+        h1 Регистрация
+        form#registerForm(method="post", onsubmit="event.preventDefault(); validateForm();")
+
+            p.errorMessage #{errorMessage}
+
+            input(type="text", name="firstName", placeholder="Имя", value=firstName required="")
+            input(type="text", name="lastName", placeholder="Фамилия", value=lastName required="")
+            input(type="text", name="username", placeholder="Ник", value=username required="")
+            input(type="email", name="email", placeholder="Email", value=email required="")
+            input#password(type="password", name="password", placeholder="Пароль", required="")
+            input#passwordConf(type="password", name="passwordConf", placeholder="Повторите пароль", required="")
+            input(type="submit", value="Зарегестрироваться")
+
+        a(href="/login") Уже есть аккаунт ? Войдите здесь.
+    
+    script.
+        var passwordField = document.getElementById("password")
+        var passwordConfirmField = document.getElementById("passwordConf")
+        var form = document.getElementById("registerForm")
+
+        function validateForm() {
+            if(passwordField.value != passwordConfirmField.value) {
+                alert("Пароли не совпадают, пожалуйста войдите здесь.")
+            }
+            else {
+                form.submit();
+            }
+        }
